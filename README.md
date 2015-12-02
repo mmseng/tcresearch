@@ -14,3 +14,5 @@ If your are unhappy with the path you got, because you do not have access to tho
 simply disable those aspects from Available Aspects:. The script will then try to find paths without these. Note that 
 this may cause the path to grow longer. If too many aspects are disabled and there are no paths left without any of 
 those, the script will try to find the shortest path using the minimal number of disabled aspects.
+
+This fork has been modified from the original source (https://github.com/ythri/tcresearch). Modifications include adding Thaumcraft v4.2.3.5 to the version selection dropdown menu (there were no mechanical nor aspect changes that I know of), and the addition of the formatted aspect chart.
