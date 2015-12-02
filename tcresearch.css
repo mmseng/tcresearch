@@ -107,3 +107,28 @@
 	line-height:32px;
 	cursor:default;
 }
+
+
+
+#chartTable {
+	border-collapse: collapse;
+}
+
+#chartTable td {
+	padding: 25px 0px 25px 0px;
+	white-space: nowrap;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	text-align: center;
+}
+#chartTable img {
+	vertical-align: middle;
+}
+.chartTableAspect {
+	font-weight: bold;
+	font-size: 1.3em;
+}
+.chartTableAspect img {
+	height: 110%;
+	width: auto;
+}
