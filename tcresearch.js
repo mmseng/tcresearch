@@ -1,5 +1,5 @@
 $(function(){
-	var latest_version = "4.2.2.0";
+	var latest_version = "4.2.3.5";
 	$.each(version_dictionary, function(key,version){
 		$("#version").append("<option value="+key+">"+key+"</option>");
 	});
@@ -161,9 +161,86 @@ $(function(){
 		$(".result").dialog("close");
 	});
 	
+	
+	
+	function formatAspectName2(string)
+	{
+		if(string == 'instrumentum') {
+			string = 'instrum.';
+		}
+		
+		if(string == 'praecantatio') {
+			string = 'praecant.';
+		}
+		
+		//http://stackoverflow.com/a/1026087 Capitalize the first letter of string in JavaScript
+		return string.charAt(0).toUpperCase() + string.slice(1);
+	}
+	
 	function reset_aspects() {
 		aspects = $.extend([], version_dictionary[version]["base_aspects"]);
 		combinations = $.extend(true, {}, version_dictionary[version]["combinations"]);
+		
+		
+		var combos = new Array();
+		for(var i = 0; i < aspects.length; i += 1) {
+			combos.push(new Array(aspects[i], 'none', 'none'));			
+		}
+		for(var combo in combinations) {
+			combos.push(new Array(combo, combinations[combo][0], combinations[combo][1]));
+		}
+		
+		var mod = 6;
+		var r = 0;
+		var chartTable = document.getElementById("chartTable");
+		var row = chartTable.insertRow(chartTable.rows.length);
+		for(var i = 0; i < combos.length; i += 1) {
+			
+			var aspect = combos[i][0];
+			var combo1 = combos[i][1];
+			var combo2 = combos[i][2];
+			
+			aspect = translate[aspect];
+			if(combo1 != 'none') {
+				combo1 = translate[combo1];
+				combo2 = translate[combo2];
+			}
+			
+			var cellNum = (r % mod) * 5;
+			var cell0 = row.insertCell(cellNum);
+			var cell1 = row.insertCell(cellNum + 1);
+			var cell2 = row.insertCell(cellNum + 2);
+			var cell3 = row.insertCell(cellNum + 3);
+			var cell4 = row.insertCell(cellNum + 4);
+			
+			cell0.innerHTML = '<span class="chartTableAspect"><img src="aspects/color/' + aspect + '.png" /><br /> ' + formatAspectName2(aspect) + '</span>';
+				
+			if(combo1 != 'none') {
+				cell1.innerHTML = '<span class="operator">=</span>';
+				cell2.innerHTML = '<img src="aspects/color/' + combo1 + '.png" /><br /> ' + formatAspectName2(combo1);
+				cell3.innerHTML = '<span class="operator">+</span>';
+				cell4.innerHTML = '<img src="aspects/color/' + combo2 + '.png" /><br /> ' + formatAspectName2(combo2);
+			}
+			
+			if((r % mod) == (mod - 1)) {
+				var row = chartTable.insertRow(chartTable.rows.length);
+			}
+			else {
+				cell4.style.borderRight = '1px solid black';
+				cell4.style.paddingRight = '10px';
+			}
+			
+			if((r % mod) != 0) {
+				cell0.style.paddingLeft = '10px';
+			}
+			
+			r += 1;
+		}
+		
+		
+		
+		
+		
 		$("#avail, #addons").empty();
 		$('#fromSel,#toSel').select2('destroy')
 		$(".addon_toggle").prop('checked', false);
