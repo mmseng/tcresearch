@@ -112,6 +112,7 @@
 
 #chartTable {
 	border-collapse: collapse;
+	border: 3px solid #444;
 	background-color: black;
 	color: white;
 }
