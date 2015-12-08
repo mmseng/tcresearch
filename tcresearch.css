@@ -112,6 +112,7 @@
 
 #chartTable {
 	border-collapse: collapse;
+	border: 1px solid white;
 	background-color: black;
 	color: white;
 }
@@ -119,8 +120,8 @@
 #chartTable td {
 	padding: 25px 0px 25px 0px;
 	white-space: nowrap;
-	border-top: 1px solid #ddd;
-	border-bottom: 1px solid #ddd;
+	border-top: 1px solid #222;
+	border-bottom: 1px solid #222;
 	text-align: center;
 }
 #chartTable img {
