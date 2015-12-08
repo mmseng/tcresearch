@@ -226,7 +226,7 @@ $(function(){
 				var row = chartTable.insertRow(chartTable.rows.length);
 			}
 			else {
-				cell4.style.borderRight = '1px solid black';
+				cell4.style.borderRight = '1px solid white';
 				cell4.style.paddingRight = '10px';
 			}
 			
