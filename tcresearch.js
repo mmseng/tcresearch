@@ -230,6 +230,8 @@ $(function(){
 				cell4.style.paddingRight = '10px';
 			}
 			
+			cell0.style.backgroundColor='#111'
+			
 			if((r % mod) != 0) {
 				cell0.style.paddingLeft = '10px';
 			}
